@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { settings } from '../config/settings';
@@ -27,6 +27,7 @@ export default function Settings() {
       setMessage({ type: 'success', content: '设置已保存' });
       setTimeout(() => setMessage({ type: '', content: '' }), 3000);
     } catch (error) {
+      console.error('保存失败:', error);
       setMessage({ type: 'error', content: '保存失败' });
     }
   };

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import WebTorrent from 'webtorrent';
 import path from 'path';
-import fs from 'fs/promises';
 import { settings } from '@/app/config/settings';
 
 // 存储当前下载任务

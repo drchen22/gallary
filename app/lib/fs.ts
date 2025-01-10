@@ -1,5 +1,3 @@
-import { settings } from '../config/settings';
-
 export interface FileItem {
   id: string;
   name: string;
@@ -11,8 +9,8 @@ export interface FileItem {
   isVideo?: boolean;
 }
 
-const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
-const videoExtensions = ['.mp4', '.webm', '.mov'];
+// const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+// const videoExtensions = ['.mp4', '.webm', '.mov'];
 
 export async function listDirectory(dirPath: string = ''): Promise<FileItem[]> {
   const response = await fetch(`/api/files?path=${encodeURIComponent(dirPath)}`);

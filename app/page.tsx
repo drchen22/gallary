@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import MediaGrid from './components/MediaGrid';
 import { listDirectory } from './lib/fs';
-import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 
 export default function Home() {
@@ -33,10 +32,10 @@ export default function Home() {
     setCurrentPath(path);
   };
 
-  const handleBack = () => {
-    const parentPath = currentPath.split('/').slice(0, -1).join('/');
-    setCurrentPath(parentPath);
-  };
+  // const handleBack = () => {
+  //   const parentPath = currentPath.split('/').slice(0, -1).join('/');
+  //   setCurrentPath(parentPath);
+  // };
 
   const handleRename = async (oldPath: string, newName: string) => {
     try {

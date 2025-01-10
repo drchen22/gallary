@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
-import { cn } from '../utils/cn';
 import type { FileItem } from '../lib/fs';
-import { FolderIcon, DocumentIcon, PhotoIcon } from '@heroicons/react/24/outline';
+import { FolderIcon, DocumentIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 interface MediaGridProps {
   items: FileItem[];
@@ -115,7 +115,7 @@ export default function MediaGrid({ items, onNavigate, onRename }: MediaGridProp
     if (item.isImage) {
       return (
         <div className="relative w-full h-full">
-          <img
+          <Image
             src={`/api/media?filePath=${encodeURIComponent(item.path)}`}
             alt={item.name}
             className="absolute inset-0 w-full h-full object-cover rounded-lg"
@@ -240,7 +240,7 @@ export default function MediaGrid({ items, onNavigate, onRename }: MediaGridProp
 
             <div className="flex-1 flex items-center justify-center w-full h-full">
               {selectedItem.isImage ? (
-                <img
+                <Image
                   src={`/api/media?filePath=${encodeURIComponent(selectedItem.path)}`}
                   alt={selectedItem.name}
                   className="max-w-screen max-h-screen object-contain p-4"
