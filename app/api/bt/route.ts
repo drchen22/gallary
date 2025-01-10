@@ -81,7 +81,7 @@ function handleTorrent(task: Task, client: WebTorrent.Instance) {
     });
 
     torrent.on('error', (err) => {
-      task.status = `错误: ${err.message}`;
+      task.status = `下载错误`;
       client.destroy();
       downloadTasks.delete(task.id);
     });
