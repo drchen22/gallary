@@ -6,6 +6,13 @@ import { settings } from '@/app/config/settings';
 // 存储当前下载任务
 const downloadTasks = new Map();
 
+interface Task {
+  id: string;
+  status: string;
+  progress: number;
+  client: WebTorrent.Instance;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -26,7 +33,7 @@ export async function POST(request: NextRequest) {
     const client = new WebTorrent();
 
     // 创建下载任务
-    const task = {
+    const task: Task = {
       id: taskId,
       progress: 0,
       status: '初始化',
@@ -58,7 +65,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function handleTorrent(task: any, client: WebTorrent.Instance) {
+function handleTorrent(task: Task, client: WebTorrent.Instance) {
   return (torrent: WebTorrent.Torrent) => {
     task.status = '下载中';
 
