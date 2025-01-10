@@ -40,7 +40,11 @@ export default function BTDownload() {
       const data = await response.json();
       setTaskId(data.taskId);
     } catch (error) {
-      setStatus(`错误: ${error.message}`);
+      if (error instanceof Error) {
+        setStatus(`错误: ${error.message}`);
+      } else {
+        setStatus(`未知错误`);
+      }
       setIsDownloading(false);
     }
   };

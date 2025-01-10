@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import MediaGrid from './components/MediaGrid';
-import { listDirectory } from './lib/fs';
 import { Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { FileItem, listDirectory } from './lib/fs';
 
 export default function Home() {
   const router = useRouter();
   const [currentPath, setCurrentPath] = useState('');
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<FileItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
